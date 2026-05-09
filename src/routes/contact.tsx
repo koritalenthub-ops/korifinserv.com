@@ -21,19 +21,44 @@ const services = ["LIC Policies", "Mutual Funds / SIP", "Health Insurance", "Gen
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: services[0], message: "" });
 
-  function onSubmit(e: React.FormEvent) {
+  const WHATSAPP_URL = "https://wa.me/918767876820?text=" + encodeURIComponent("Hello, I'm interested in your financial services.");
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !/^\d{10}$/.test(form.phone.replace(/\D/g, "").slice(-10))) return;
-    const text = `*New Lead — Kori Financial*%0A` +
-      `Name: ${encodeURIComponent(form.name)}%0A` +
-      `Phone: ${encodeURIComponent(form.phone)}%0A` +
-      `Email: ${encodeURIComponent(form.email)}%0A` +
-      `Service: ${encodeURIComponent(form.service)}%0A` +
-      `Message: ${encodeURIComponent(form.message)}`;
-    window.open(`https://wa.me/918767876820?text=${text}`, "_blank");
-    setSubmitted(true);
+    setError("");
+    if (!form.name.trim() || !/^\d{10}$/.test(form.phone.replace(/\D/g, "").slice(-10))) {
+      setError("Please enter a valid name and 10-digit mobile number.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "w3f_bd0cb428281f833655162171705934cf99a1a68789a1c78a",
+          subject: "New Lead — Kori Financial Service",
+          from_name: "Kori Financial Website",
+          "Full Name": form.name,
+          "Mobile Number": form.phone,
+          "Email": form.email,
+          "Service Interested In": form.service,
+          "Message": form.message,
+        }),
+      });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || "Submission failed");
+      setSubmitted(true);
+      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 1500);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -52,7 +77,10 @@ function ContactPage() {
                 <div className="mt-8 rounded-2xl bg-emerald-glow/10 border border-emerald-glow/30 p-6 text-center">
                   <CheckCircle2 className="h-10 w-10 text-emerald-glow mx-auto" />
                   <h3 className="mt-3 font-display text-xl">Thank you, {form.name.split(" ")[0]}!</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Your enquiry has been opened in WhatsApp. We'll be in touch shortly.</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Your inquiry was sent successfully. Redirecting you to WhatsApp...</p>
+                  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-semibold bg-emerald-glow/20 text-emerald-glow border border-emerald-glow/40">
+                    <WhatsAppIcon className="h-4 w-4" /> Open WhatsApp
+                  </a>
                 </div>
               ) : (
                 <form onSubmit={onSubmit} className="mt-6 grid sm:grid-cols-2 gap-4">
@@ -72,11 +100,12 @@ function ContactPage() {
                       className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"
                       placeholder="How can we help?" />
                   </div>
+                  {error && <div className="sm:col-span-2 text-sm text-destructive">{error}</div>}
                   <div className="sm:col-span-2 flex flex-wrap gap-3">
-                    <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-gradient-gold text-navy-deep px-7 py-3.5 font-semibold shadow-gold hover:scale-[1.02] transition-transform">
-                      <Send className="h-4 w-4" /> Submit Inquiry
+                    <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-full bg-gradient-gold text-navy-deep px-7 py-3.5 font-semibold shadow-gold hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:cursor-not-allowed">
+                      <Send className="h-4 w-4" /> {submitting ? "Sending..." : "Submit Inquiry"}
                     </button>
-                    <a href="https://wa.me/918767876820" target="_blank" rel="noreferrer"
+                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
                       className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold bg-emerald-glow/10 border border-emerald-glow/30 text-emerald-glow hover:bg-emerald-glow/20 transition-colors">
                       <WhatsAppIcon className="h-4 w-4" /> WhatsApp Now
                     </a>
