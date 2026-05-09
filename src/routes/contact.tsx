@@ -97,11 +97,12 @@ function ContactPage() {
                       className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold resize-none"
                       placeholder="How can we help?" />
                   </div>
+                  {error && <div className="sm:col-span-2 text-sm text-destructive">{error}</div>}
                   <div className="sm:col-span-2 flex flex-wrap gap-3">
-                    <button type="submit" className="inline-flex items-center gap-2 rounded-full bg-gradient-gold text-navy-deep px-7 py-3.5 font-semibold shadow-gold hover:scale-[1.02] transition-transform">
-                      <Send className="h-4 w-4" /> Submit Inquiry
+                    <button type="submit" disabled={submitting} className="inline-flex items-center gap-2 rounded-full bg-gradient-gold text-navy-deep px-7 py-3.5 font-semibold shadow-gold hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:cursor-not-allowed">
+                      <Send className="h-4 w-4" /> {submitting ? "Sending..." : "Submit Inquiry"}
                     </button>
-                    <a href="https://wa.me/918767876820" target="_blank" rel="noreferrer"
+                    <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
                       className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold bg-emerald-glow/10 border border-emerald-glow/30 text-emerald-glow hover:bg-emerald-glow/20 transition-colors">
                       <WhatsAppIcon className="h-4 w-4" /> WhatsApp Now
                     </a>
