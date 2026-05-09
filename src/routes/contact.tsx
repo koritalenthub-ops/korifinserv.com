@@ -21,19 +21,44 @@ const services = ["LIC Policies", "Mutual Funds / SIP", "Health Insurance", "Gen
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: services[0], message: "" });
 
-  function onSubmit(e: React.FormEvent) {
+  const WHATSAPP_URL = "https://wa.me/918767876820?text=" + encodeURIComponent("Hello, I'm interested in your financial services.");
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name.trim() || !/^\d{10}$/.test(form.phone.replace(/\D/g, "").slice(-10))) return;
-    const text = `*New Lead — Kori Financial*%0A` +
-      `Name: ${encodeURIComponent(form.name)}%0A` +
-      `Phone: ${encodeURIComponent(form.phone)}%0A` +
-      `Email: ${encodeURIComponent(form.email)}%0A` +
-      `Service: ${encodeURIComponent(form.service)}%0A` +
-      `Message: ${encodeURIComponent(form.message)}`;
-    window.open(`https://wa.me/918767876820?text=${text}`, "_blank");
-    setSubmitted(true);
+    setError("");
+    if (!form.name.trim() || !/^\d{10}$/.test(form.phone.replace(/\D/g, "").slice(-10))) {
+      setError("Please enter a valid name and 10-digit mobile number.");
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "w3f_bd0cb428281f833655162171705934cf99a1a68789a1c78a",
+          subject: "New Lead — Kori Financial Service",
+          from_name: "Kori Financial Website",
+          "Full Name": form.name,
+          "Mobile Number": form.phone,
+          "Email": form.email,
+          "Service Interested In": form.service,
+          "Message": form.message,
+        }),
+      });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || "Submission failed");
+      setSubmitted(true);
+      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 1500);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
