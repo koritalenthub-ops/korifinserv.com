@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { MessageCircle, Mail, Phone, MapPin, Globe, Share2, Camera, Briefcase } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { LinkedInIcon, FacebookIcon, InstagramIcon, WhatsAppIcon } from "./BrandIcons";
 import logo from "@/assets/kori-logo.png";
 
 export function Footer() {
@@ -20,10 +21,10 @@ export function Footer() {
           </p>
           <div className="flex gap-3 mt-5">
             {[
-              { Icon: Briefcase, href: "#", label: "LinkedIn" },
-              { Icon: Globe, href: "#", label: "Facebook" },
-              { Icon: Camera, href: "#", label: "Instagram" },
-              { Icon: MessageCircle, href: "https://wa.me/918767876820", label: "WhatsApp" },
+              { Icon: LinkedInIcon, href: "#" },
+              { Icon: FacebookIcon, href: "#" },
+              { Icon: InstagramIcon, href: "#" },
+              { Icon: WhatsAppIcon, href: "https://wa.me/918767876820" },
             ].map(({ Icon, href }, i) => (
               <a key={i} href={href} target="_blank" rel="noreferrer" className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-colors">
                 <Icon className="h-4 w-4" />
