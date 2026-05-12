@@ -22,6 +22,7 @@ const services = ["LIC Policies", "Mutual Funds / SIP", "Health Insurance", "Gen
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: services[0], message: "" });
