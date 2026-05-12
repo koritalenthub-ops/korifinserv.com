@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, X } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 import { PageHero, Section } from "@/components/site/Section";
 import { WhatsAppIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from "@/components/site/BrandIcons";
 
@@ -21,6 +22,7 @@ const services = ["LIC Policies", "Mutual Funds / SIP", "Health Insurance", "Gen
 
 function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: services[0], message: "" });
@@ -53,7 +55,8 @@ function ContactPage() {
       const json = await res.json();
       if (!json.success) throw new Error(json.message || "Submission failed");
       setSubmitted(true);
-      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 1500);
+      setShowPopup(true);
+      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 2500);
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
@@ -156,6 +159,55 @@ function ContactPage() {
           </motion.div>
         </div>
       </Section>
+
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-navy-deep/80 backdrop-blur-sm"
+            onClick={() => setShowPopup(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, y: 30, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 22, stiffness: 280 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-md rounded-3xl bg-card border border-gold/30 shadow-luxe overflow-hidden"
+            >
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-gold" />
+              <button onClick={() => setShowPopup(false)} aria-label="Close"
+                className="absolute top-4 right-4 h-8 w-8 grid place-items-center rounded-full text-muted-foreground hover:bg-secondary transition-colors">
+                <X className="h-4 w-4" />
+              </button>
+              <div className="p-8 sm:p-10 text-center">
+                <motion.div
+                  initial={{ scale: 0 }} animate={{ scale: 1 }}
+                  transition={{ delay: 0.15, type: "spring", damping: 12 }}
+                  className="mx-auto h-20 w-20 rounded-full bg-gradient-gold grid place-items-center shadow-gold"
+                >
+                  <CheckCircle2 className="h-10 w-10 text-navy-deep" strokeWidth={2.5} />
+                </motion.div>
+                <h3 className="mt-6 font-display text-2xl sm:text-3xl font-bold leading-tight">
+                  Thank you for contacting<br/>
+                  <span className="text-gold">Kori Financial Service</span>
+                </h3>
+                <p className="mt-4 text-muted-foreground">
+                  Our team will connect with you shortly.
+                </p>
+                <div className="mt-6 flex items-center justify-center gap-2 text-sm text-emerald-glow">
+                  <span className="h-2 w-2 rounded-full bg-emerald-glow animate-pulse" />
+                  Redirecting you to WhatsApp...
+                </div>
+                <a href={WHATSAPP_URL} target="_blank" rel="noreferrer"
+                  className="mt-6 inline-flex items-center justify-center gap-2 w-full rounded-full bg-gradient-emerald text-white px-6 py-3 font-semibold shadow-luxe hover:scale-[1.02] transition-transform">
+                  <WhatsAppIcon className="h-4 w-4" /> Open WhatsApp Now
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
