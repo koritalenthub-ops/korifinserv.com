@@ -40,7 +40,7 @@ function ContactPage() {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
-          access_key: "w3f_bd0cb428281f833655162171705934cf99a1a68789a1c78a",
+          access_key: "ed4bd344-6526-4d5a-a2ab-acd3cc999428",
           subject: "New Lead — Kori Financial Service",
           from_name: "Kori Financial Website",
           "Full Name": form.name,
@@ -77,7 +77,7 @@ function ContactPage() {
                 <div className="mt-8 rounded-2xl bg-emerald-glow/10 border border-emerald-glow/30 p-6 text-center">
                   <CheckCircle2 className="h-10 w-10 text-emerald-glow mx-auto" />
                   <h3 className="mt-3 font-display text-xl">Thank you, {form.name.split(" ")[0]}!</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">Your inquiry was sent successfully. Redirecting you to WhatsApp...</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Thank you! We will contact you shortly. Redirecting you to WhatsApp...</p>
                   <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-semibold bg-emerald-glow/20 text-emerald-glow border border-emerald-glow/40">
                     <WhatsAppIcon className="h-4 w-4" /> Open WhatsApp
                   </a>
