@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
+import { Mail, Phone, MapPin, Send, CheckCircle2, X } from "lucide-react";
+import { AnimatePresence } from "framer-motion";
 import { PageHero, Section } from "@/components/site/Section";
 import { WhatsAppIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from "@/components/site/BrandIcons";
 
