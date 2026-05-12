@@ -55,7 +55,8 @@ function ContactPage() {
       const json = await res.json();
       if (!json.success) throw new Error(json.message || "Submission failed");
       setSubmitted(true);
-      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 1500);
+      setShowPopup(true);
+      setTimeout(() => { window.open(WHATSAPP_URL, "_blank"); }, 2500);
     } catch (err: any) {
       setError(err.message || "Something went wrong. Please try again.");
     } finally {
