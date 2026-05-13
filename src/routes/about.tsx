@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Award, Target, Eye, Users, Calendar, ShieldCheck, ArrowRight } from "lucide-react";
+import { Award, Target, Eye, Users, Calendar, ShieldCheck, ArrowRight, Heart, Handshake, Lightbulb, TrendingUp, Lock } from "lucide-react";
 import { PageHero, Section, SectionHeader } from "@/components/site/Section";
 import portrait from "@/assets/about-portrait.jpg";
+import banner from "@/assets/banners/about.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
