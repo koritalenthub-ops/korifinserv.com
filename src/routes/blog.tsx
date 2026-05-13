@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight } from "lucide-react";
 import { PageHero, Section, SectionHeader } from "@/components/site/Section";
+import banner from "@/assets/banners/blog.jpg";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -27,7 +28,7 @@ const posts = [
 function BlogPage() {
   return (
     <>
-      <PageHero eyebrow="Insights & Blog" title="Plain-English financial insights for your family." sub="Bite-sized advice from 20+ years of advising families across India." />
+      <PageHero eyebrow="Insights & Blog" title="Plain-English financial insights for your family." sub="Bite-sized advice from 20+ years of advising families across India." image={banner} />
       <Section>
         <SectionHeader eyebrow="Latest Articles" title="From our journal" />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Send, CheckCircle2, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { PageHero, Section } from "@/components/site/Section";
 import { WhatsAppIcon, LinkedInIcon, FacebookIcon, InstagramIcon } from "@/components/site/BrandIcons";
+import banner from "@/assets/banners/contact.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -66,7 +67,7 @@ function ContactPage() {
 
   return (
     <>
-      <PageHero eyebrow="Get In Touch" title="Let's plan your secure future." sub="Free, no-obligation consultation. We typically reply within a few hours." />
+      <PageHero eyebrow="Get In Touch" title="Let's plan your secure future." sub="Free, no-obligation consultation. We typically reply within a few hours." image={banner} />
 
       <Section>
         <div className="grid lg:grid-cols-5 gap-10">
