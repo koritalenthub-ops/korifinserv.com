@@ -10,6 +10,12 @@ import { WhatsAppIcon } from "@/components/site/BrandIcons";
 import logo from "@/assets/kori-logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import portrait from "@/assets/about-portrait.jpg";
+import licImg from "@/assets/services/lic.jpg";
+import mfImg from "@/assets/services/mutual-funds.jpg";
+import healthImg from "@/assets/services/health.jpg";
+import generalImg from "@/assets/services/general.jpg";
+import fdImg from "@/assets/services/fd.jpg";
+import wealthImg from "@/assets/services/wealth.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,12 +37,12 @@ const stats = [
 ];
 
 const services = [
-  { Icon: ShieldCheck, title: "LIC Policies", desc: "Child plans, pension, retirement, tax saving & life protection.", tone: "from-[oklch(0.55_0.15_230)] to-[oklch(0.4_0.12_260)]" },
-  { Icon: TrendingUp, title: "Mutual Funds", desc: "SIP planning, wealth creation & goal-based investing across 9+ AMCs.", tone: "from-[oklch(0.72_0.18_150)] to-[oklch(0.55_0.15_180)]" },
-  { Icon: HeartPulse, title: "Health Insurance", desc: "Family floater, critical illness, mediclaim & senior citizen plans.", tone: "from-[oklch(0.65_0.2_25)] to-[oklch(0.55_0.18_15)]" },
-  { Icon: Car, title: "General Insurance", desc: "Vehicle, travel and property insurance from leading insurers.", tone: "from-[oklch(0.6_0.15_280)] to-[oklch(0.45_0.13_300)]" },
-  { Icon: Landmark, title: "Fixed Deposits", desc: "Secure investments with guaranteed returns and stability.", tone: "from-[oklch(0.82_0.14_85)] to-[oklch(0.7_0.16_60)]" },
-  { Icon: Sparkles, title: "Wealth Planning", desc: "Personalised goal-based portfolio construction for your family.", tone: "from-[oklch(0.5_0.15_260)] to-[oklch(0.35_0.12_240)]" },
+  { Icon: ShieldCheck, title: "LIC Insurance", desc: "Child plans, pension, retirement, tax-saving & pure life protection from India's most trusted insurer.", img: licImg, slug: "lic-insurance", tone: "from-[oklch(0.55_0.15_230)] to-[oklch(0.4_0.12_260)]" },
+  { Icon: TrendingUp, title: "Mutual Funds", desc: "Goal-based SIPs and lump-sum investments across 9+ leading AMCs for long-term wealth creation.", img: mfImg, slug: "mutual-funds", tone: "from-[oklch(0.72_0.18_150)] to-[oklch(0.55_0.15_180)]" },
+  { Icon: HeartPulse, title: "Health Insurance", desc: "Family floater, critical illness, mediclaim & senior citizen plans that protect what matters most.", img: healthImg, slug: "health-insurance", tone: "from-[oklch(0.65_0.2_25)] to-[oklch(0.55_0.18_15)]" },
+  { Icon: Car, title: "General Insurance", desc: "Vehicle, travel, home and property insurance from leading IRDAI-regulated insurers.", img: generalImg, slug: "general-insurance", tone: "from-[oklch(0.6_0.15_280)] to-[oklch(0.45_0.13_300)]" },
+  { Icon: Landmark, title: "Fixed Deposits", desc: "Stable, predictable returns from RBI-regulated banks and top-rated corporate FDs.", img: fdImg, slug: "fixed-deposits", tone: "from-[oklch(0.82_0.14_85)] to-[oklch(0.7_0.16_60)]" },
+  { Icon: Sparkles, title: "Wealth Planning", desc: "Personalised, goal-based portfolio construction blending protection, growth and liquidity.", img: wealthImg, slug: "wealth-planning", tone: "from-[oklch(0.5_0.15_260)] to-[oklch(0.35_0.12_240)]" },
 ];
 
 const why = [
@@ -186,19 +192,24 @@ function HomePage() {
       {/* Services */}
       <Section className="bg-secondary/40">
         <SectionHeader eyebrow="Our Services" title="Comprehensive financial solutions" sub="From wealth creation to protection — every product hand-picked from leading institutions and tailored to your life stage." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ Icon, title, desc, tone }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative rounded-3xl bg-card border border-border p-7 shadow-card hover:shadow-luxe hover:-translate-y-1 transition-all overflow-hidden">
-              <div className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${tone} opacity-20 group-hover:opacity-40 blur-2xl transition-opacity`} />
-              <div className={`relative h-12 w-12 rounded-2xl bg-gradient-to-br ${tone} grid place-items-center text-white shadow-lg`}>
-                <Icon className="h-6 w-6" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {services.map((s, i) => (
+            <motion.div key={s.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.07, duration: 0.5 }}
+              className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card hover:shadow-luxe hover:-translate-y-1.5 transition-all flex flex-col">
+              <div className="relative h-48 overflow-hidden">
+                <img src={s.img} alt={s.title} loading="lazy" width={1024} height={768} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/20 to-transparent" />
+                <div className={`absolute top-4 left-4 h-11 w-11 rounded-2xl bg-gradient-to-br ${s.tone} grid place-items-center text-white shadow-lg`}>
+                  <s.Icon className="h-5 w-5" />
+                </div>
+                <h3 className="absolute bottom-4 left-4 right-4 font-display text-xl font-semibold text-white drop-shadow">{s.title}</h3>
               </div>
-              <h3 className="relative mt-5 text-xl font-display font-semibold">{title}</h3>
-              <p className="relative mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-              <Link to="/services" className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+              <div className="p-6 flex-1 flex flex-col">
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.desc}</p>
+                <Link to="/services" hash={s.slug} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all self-start">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
