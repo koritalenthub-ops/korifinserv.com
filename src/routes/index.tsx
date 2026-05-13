@@ -192,19 +192,24 @@ function HomePage() {
       {/* Services */}
       <Section className="bg-secondary/40">
         <SectionHeader eyebrow="Our Services" title="Comprehensive financial solutions" sub="From wealth creation to protection — every product hand-picked from leading institutions and tailored to your life stage." />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map(({ Icon, title, desc, tone }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.07, duration: 0.5 }}
-              className="group relative rounded-3xl bg-card border border-border p-7 shadow-card hover:shadow-luxe hover:-translate-y-1 transition-all overflow-hidden">
-              <div className={`absolute -top-16 -right-16 h-40 w-40 rounded-full bg-gradient-to-br ${tone} opacity-20 group-hover:opacity-40 blur-2xl transition-opacity`} />
-              <div className={`relative h-12 w-12 rounded-2xl bg-gradient-to-br ${tone} grid place-items-center text-white shadow-lg`}>
-                <Icon className="h-6 w-6" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {services.map((s, i) => (
+            <motion.div key={s.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ delay: i * 0.07, duration: 0.5 }}
+              className="group relative rounded-3xl overflow-hidden bg-card border border-border shadow-card hover:shadow-luxe hover:-translate-y-1.5 transition-all flex flex-col">
+              <div className="relative h-48 overflow-hidden">
+                <img src={s.img} alt={s.title} loading="lazy" width={1024} height={768} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/20 to-transparent" />
+                <div className={`absolute top-4 left-4 h-11 w-11 rounded-2xl bg-gradient-to-br ${s.tone} grid place-items-center text-white shadow-lg`}>
+                  <s.Icon className="h-5 w-5" />
+                </div>
+                <h3 className="absolute bottom-4 left-4 right-4 font-display text-xl font-semibold text-white drop-shadow">{s.title}</h3>
               </div>
-              <h3 className="relative mt-5 text-xl font-display font-semibold">{title}</h3>
-              <p className="relative mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
-              <Link to="/services" className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all">
-                Learn more <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
+              <div className="p-6 flex-1 flex flex-col">
+                <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.desc}</p>
+                <Link to="/services" hash={s.slug} className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all self-start">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
             </motion.div>
           ))}
         </div>
