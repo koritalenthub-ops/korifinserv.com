@@ -86,6 +86,53 @@ function AboutPage() {
         </div>
       </Section>
 
+      {/* Why families trust us */}
+      <Section>
+        <SectionHeader eyebrow="Why Families Trust Us" title="A practice families come back to — generation after generation." sub="Every recommendation is independent, transparent and goal-aligned. No hidden fees. No pressure. Just honest, lifelong advice." />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { Icon: Handshake, title: "Relationship-first", desc: "We're advisors for life — not for one transaction." },
+            { Icon: Lock, title: "Transparent advice", desc: "You see exactly why each product is recommended." },
+            { Icon: Lightbulb, title: "Education-led", desc: "We explain in plain language so you make confident decisions." },
+            { Icon: ShieldCheck, title: "End-to-end claim help", desc: "Our team personally handles your claims — start to finish." },
+            { Icon: Heart, title: "Family-centric", desc: "We plan across generations — children, parents and partners." },
+            { Icon: TrendingUp, title: "Annual reviews", desc: "Portfolios are reviewed twice a year and rebalanced as life changes." },
+          ].map(({ Icon, title, desc }, i) => (
+            <motion.div key={title} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+              className="rounded-3xl bg-card border border-border p-7 shadow-card hover:shadow-luxe hover:-translate-y-1 transition-all">
+              <div className="h-12 w-12 rounded-2xl bg-gradient-gold grid place-items-center text-navy-deep mb-4 shadow-gold"><Icon className="h-6 w-6" /></div>
+              <h3 className="font-display text-lg font-semibold">{title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Philosophy */}
+      <Section className="bg-gradient-hero text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,oklch(0.82_0.14_85/0.15),transparent_60%)]" />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full border border-gold/40 bg-white/5 text-xs tracking-[0.25em] text-gold font-semibold uppercase">Our Philosophy</div>
+          <h2 className="text-4xl sm:text-5xl font-bold leading-tight">Protect first. <span className="text-gradient-gold">Then grow.</span></h2>
+          <p className="mt-6 text-white/75 text-lg leading-relaxed">
+            Real wealth is built when life insurance, health cover, emergency reserves and disciplined investing work together. Our planning starts by securing what you have, then layers in long-term growth through mutual funds, fixed income and goal-based planning — so a single bad year never derails decades of progress.
+          </p>
+          <div className="mt-10 grid sm:grid-cols-3 gap-5 text-left">
+            {[
+              { t: "Protection", d: "Adequate life, health and asset insurance for your family's stage of life." },
+              { t: "Growth", d: "Goal-aligned mutual fund and SIP strategies built for the long term." },
+              { t: "Liquidity", d: "Smart cash reserves and FDs so you're never forced to sell at a loss." },
+            ].map((p) => (
+              <div key={p.t} className="rounded-2xl bg-white/5 border border-white/10 p-6">
+                <div className="text-xs uppercase tracking-[0.2em] text-gold font-semibold">{p.t}</div>
+                <p className="mt-2 text-sm text-white/75">{p.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Stats */}
       <Section>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
