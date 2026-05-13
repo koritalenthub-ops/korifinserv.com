@@ -29,11 +29,15 @@ export function SectionHeader({ eyebrow, title, sub, center = true }: { eyebrow?
   );
 }
 
-export function PageHero({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?: string }) {
+export function PageHero({ eyebrow, title, sub, image }: { eyebrow: string; title: string; sub?: string; image?: string }) {
   return (
-    <section className="relative pt-40 pb-20 bg-gradient-hero text-white overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.82_0.14_85/0.15),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.72_0.18_150/0.12),transparent_50%)]" />
+    <section className="relative pt-40 pb-24 bg-gradient-hero text-white overflow-hidden">
+      {image && (
+        <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-luminosity" loading="eager" />
+      )}
+      <div className="absolute inset-0 bg-gradient-hero opacity-80" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,oklch(0.82_0.14_85/0.18),transparent_55%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,oklch(0.72_0.18_150/0.14),transparent_55%)]" />
       <div className="relative mx-auto max-w-5xl px-6 text-center">
         <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full border border-gold/40 bg-white/5 text-xs tracking-[0.25em] text-gold font-semibold uppercase">
           {eyebrow}
