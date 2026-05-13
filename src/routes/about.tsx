@@ -28,7 +28,7 @@ const milestones = [
 function AboutPage() {
   return (
     <>
-      <PageHero eyebrow="About Us" title="Built on trust. Backed by 20 years of experience." sub="Honest advice, deep expertise, and a relationship-first approach to your family's financial future." />
+      <PageHero eyebrow="About Us" title="Built on trust. Backed by 20 years of experience." sub="Honest advice, deep expertise, and a relationship-first approach to your family's financial future." image={banner} />
 
       <Section>
         <div className="grid lg:grid-cols-2 gap-14 items-center">
