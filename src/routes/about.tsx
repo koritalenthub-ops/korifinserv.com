@@ -43,7 +43,10 @@ function AboutPage() {
               Founded by Rakesh Kori in 2004, Kori Financial Service has grown into one of the most trusted family financial advisory practices in the region. We don't sell products — we build long-term relationships rooted in transparency, education and outcomes.
             </p>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              From a child's first SIP to a parent's retirement plan and everything in between, we sit on the same side of the table as you.
+              For over two decades, our work has been guided by a simple belief: every family deserves a personal financial advisor who actually picks up the phone. From a child's first SIP to a parent's retirement plan and everything in between, we sit on the same side of the table as you.
+            </p>
+            <p className="mt-3 text-muted-foreground leading-relaxed">
+              We blend deep expertise across LIC, mutual funds, health & general insurance and fixed income with patient, jargon-free guidance — so every client feels confident about where their money is going and why.
             </p>
 
             <div className="mt-8 grid sm:grid-cols-2 gap-4">
