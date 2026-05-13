@@ -10,6 +10,12 @@ import { WhatsAppIcon } from "@/components/site/BrandIcons";
 import logo from "@/assets/kori-logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
 import portrait from "@/assets/about-portrait.jpg";
+import licImg from "@/assets/services/lic.jpg";
+import mfImg from "@/assets/services/mutual-funds.jpg";
+import healthImg from "@/assets/services/health.jpg";
+import generalImg from "@/assets/services/general.jpg";
+import fdImg from "@/assets/services/fd.jpg";
+import wealthImg from "@/assets/services/wealth.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,12 +37,12 @@ const stats = [
 ];
 
 const services = [
-  { Icon: ShieldCheck, title: "LIC Policies", desc: "Child plans, pension, retirement, tax saving & life protection.", tone: "from-[oklch(0.55_0.15_230)] to-[oklch(0.4_0.12_260)]" },
-  { Icon: TrendingUp, title: "Mutual Funds", desc: "SIP planning, wealth creation & goal-based investing across 9+ AMCs.", tone: "from-[oklch(0.72_0.18_150)] to-[oklch(0.55_0.15_180)]" },
-  { Icon: HeartPulse, title: "Health Insurance", desc: "Family floater, critical illness, mediclaim & senior citizen plans.", tone: "from-[oklch(0.65_0.2_25)] to-[oklch(0.55_0.18_15)]" },
-  { Icon: Car, title: "General Insurance", desc: "Vehicle, travel and property insurance from leading insurers.", tone: "from-[oklch(0.6_0.15_280)] to-[oklch(0.45_0.13_300)]" },
-  { Icon: Landmark, title: "Fixed Deposits", desc: "Secure investments with guaranteed returns and stability.", tone: "from-[oklch(0.82_0.14_85)] to-[oklch(0.7_0.16_60)]" },
-  { Icon: Sparkles, title: "Wealth Planning", desc: "Personalised goal-based portfolio construction for your family.", tone: "from-[oklch(0.5_0.15_260)] to-[oklch(0.35_0.12_240)]" },
+  { Icon: ShieldCheck, title: "LIC Insurance", desc: "Child plans, pension, retirement, tax-saving & pure life protection from India's most trusted insurer.", img: licImg, slug: "lic-insurance", tone: "from-[oklch(0.55_0.15_230)] to-[oklch(0.4_0.12_260)]" },
+  { Icon: TrendingUp, title: "Mutual Funds", desc: "Goal-based SIPs and lump-sum investments across 9+ leading AMCs for long-term wealth creation.", img: mfImg, slug: "mutual-funds", tone: "from-[oklch(0.72_0.18_150)] to-[oklch(0.55_0.15_180)]" },
+  { Icon: HeartPulse, title: "Health Insurance", desc: "Family floater, critical illness, mediclaim & senior citizen plans that protect what matters most.", img: healthImg, slug: "health-insurance", tone: "from-[oklch(0.65_0.2_25)] to-[oklch(0.55_0.18_15)]" },
+  { Icon: Car, title: "General Insurance", desc: "Vehicle, travel, home and property insurance from leading IRDAI-regulated insurers.", img: generalImg, slug: "general-insurance", tone: "from-[oklch(0.6_0.15_280)] to-[oklch(0.45_0.13_300)]" },
+  { Icon: Landmark, title: "Fixed Deposits", desc: "Stable, predictable returns from RBI-regulated banks and top-rated corporate FDs.", img: fdImg, slug: "fixed-deposits", tone: "from-[oklch(0.82_0.14_85)] to-[oklch(0.7_0.16_60)]" },
+  { Icon: Sparkles, title: "Wealth Planning", desc: "Personalised, goal-based portfolio construction blending protection, growth and liquidity.", img: wealthImg, slug: "wealth-planning", tone: "from-[oklch(0.5_0.15_260)] to-[oklch(0.35_0.12_240)]" },
 ];
 
 const why = [
