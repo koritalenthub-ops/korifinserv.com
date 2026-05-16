@@ -139,10 +139,15 @@ function ContactPage() {
             <div className="rounded-3xl bg-card border border-border p-8 shadow-card">
               <div className="text-xs uppercase tracking-[0.3em] text-gold font-semibold mb-4">Follow us</div>
               <div className="flex gap-3">
-                {[LinkedInIcon, FacebookIcon, InstagramIcon, WhatsAppIcon].map((I, i) => (
-                  <a key={i} href={i === 3 ? "https://wa.me/918767876820" : "#"} target="_blank" rel="noreferrer"
-                    className="h-11 w-11 grid place-items-center rounded-full border border-border hover:border-gold hover:text-gold hover:bg-gold/5 transition-colors">
-                    <I className="h-4 w-4" />
+                {[
+                  { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/rakesh-kori-2109b71b/" },
+                  { Icon: FacebookIcon, href: "https://www.facebook.com/share/17m4W6pAvu/" },
+                  { Icon: InstagramIcon, href: "https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" },
+                  { Icon: WhatsAppIcon, href: "https://wa.me/918767876820" },
+                ].map(({ Icon, href }, i) => (
+                  <a key={i} href={href} target="_blank" rel="noreferrer"
+                    className="h-11 w-11 grid place-items-center rounded-full border border-border hover:border-gold hover:text-gold hover:bg-gold/5 hover:scale-110 transition-all duration-300">
+                    <Icon className="h-4 w-4" />
                   </a>
                 ))}
               </div>

@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/kori-logo.png";
+import { LinkedInIcon, FacebookIcon, InstagramIcon } from "./BrandIcons";
 
 const links = [
   { to: "/", label: "Home" },
@@ -63,9 +64,23 @@ export function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+918767876820" className="flex items-center gap-2 text-sm text-white/80 hover:text-white">
+          <a href="tel:+918767876820" className="flex items-center gap-2 text-sm text-white/80 hover:text-white transition-colors">
             <Phone className="h-4 w-4 text-gold" /> +91 87678 76820
           </a>
+          <div className="flex items-center gap-1">
+            <a href="https://www.linkedin.com/in/rakesh-kori-2109b71b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+              className="h-9 w-9 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 hover:scale-110 transition-all duration-300">
+              <LinkedInIcon className="h-3.5 w-3.5" />
+            </a>
+            <a href="https://www.facebook.com/share/17m4W6pAvu/" target="_blank" rel="noreferrer" aria-label="Facebook"
+              className="h-9 w-9 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 hover:scale-110 transition-all duration-300">
+              <FacebookIcon className="h-3.5 w-3.5" />
+            </a>
+            <a href="https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" target="_blank" rel="noreferrer" aria-label="Instagram"
+              className="h-9 w-9 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 hover:scale-110 transition-all duration-300">
+              <InstagramIcon className="h-3.5 w-3.5" />
+            </a>
+          </div>
           <Link to="/contact" className="px-5 py-2.5 rounded-full bg-gradient-gold text-navy-deep font-semibold text-sm shadow-gold hover:scale-105 transition-transform">
             Free Consultation
           </Link>
@@ -84,6 +99,20 @@ export function Navbar() {
             </Link>
           ))}
           <Link to="/contact" className="mt-2 px-4 py-3 rounded-full bg-gradient-gold text-navy-deep font-semibold text-center">Free Consultation</Link>
+          <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-center gap-3">
+            <a href="https://www.linkedin.com/in/rakesh-kori-2109b71b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <LinkedInIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.facebook.com/share/17m4W6pAvu/" target="_blank" rel="noreferrer" aria-label="Facebook"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" target="_blank" rel="noreferrer" aria-label="Instagram"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       )}
     </header>
