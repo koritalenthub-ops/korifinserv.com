@@ -99,6 +99,20 @@ export function Navbar() {
             </Link>
           ))}
           <Link to="/contact" className="mt-2 px-4 py-3 rounded-full bg-gradient-gold text-navy-deep font-semibold text-center">Free Consultation</Link>
+          <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-center gap-3">
+            <a href="https://www.linkedin.com/in/rakesh-kori-2109b71b/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <LinkedInIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.facebook.com/share/17m4W6pAvu/" target="_blank" rel="noreferrer" aria-label="Facebook"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+            <a href="https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" target="_blank" rel="noreferrer" aria-label="Instagram"
+              className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-all duration-300">
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       )}
     </header>
