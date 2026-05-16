@@ -21,9 +21,9 @@ export function Footer() {
           </p>
           <div className="flex gap-3 mt-5">
             {[
-              { Icon: LinkedInIcon, href: "#" },
-              { Icon: FacebookIcon, href: "#" },
-              { Icon: InstagramIcon, href: "#" },
+              { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/rakesh-kori-2109b71b/" },
+              { Icon: FacebookIcon, href: "https://www.facebook.com/share/17m4W6pAvu/" },
+              { Icon: InstagramIcon, href: "https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" },
               { Icon: WhatsAppIcon, href: "https://wa.me/918767876820" },
             ].map(({ Icon, href }, i) => (
               <a key={i} href={href} target="_blank" rel="noreferrer" className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-colors">

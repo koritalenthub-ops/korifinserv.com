@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/kori-logo.png";
+import { LinkedInIcon, FacebookIcon, InstagramIcon } from "./BrandIcons";
 
 const links = [
   { to: "/", label: "Home" },
