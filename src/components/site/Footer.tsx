@@ -26,7 +26,7 @@ export function Footer() {
               { Icon: InstagramIcon, href: "https://www.instagram.com/rakesh73.kori?igsh=MXM4czlnaTM2YXc1cQ==" },
               { Icon: WhatsAppIcon, href: "https://wa.me/918767876820" },
             ].map(({ Icon, href }, i) => (
-              <a key={i} href={href} target="_blank" rel="noreferrer" className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 transition-colors">
+              <a key={i} href={href} target="_blank" rel="noreferrer" className="h-10 w-10 grid place-items-center rounded-full border border-white/15 hover:border-gold hover:text-gold hover:bg-white/5 hover:scale-110 transition-all duration-300">
                 <Icon className="h-4 w-4" />
               </a>
             ))}
