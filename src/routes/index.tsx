@@ -51,7 +51,7 @@ const why = [
   { Icon: ShieldCheck, title: "Trusted Solutions", desc: "Only handpicked, regulated products from top institutions." },
   { Icon: Sparkles, title: "Personalised Guidance", desc: "Custom plans built around your goals and risk profile." },
   { Icon: CheckCircle2, title: "Fast Claim Assistance", desc: "We stand by you when it matters most — end-to-end claim help." },
-  { Icon: Briefcase, title: "Lifetime Support", desc: "A relationship-first approach that lasts beyond a transaction." },
+  { Icon: Briefcase, title: "Lifetime Support", desc: "A relationship-first approach that lasts beyond a transaction.\n\n" },
 ];
 
 const testimonials = [
