@@ -51,7 +51,7 @@ const why = [
   { Icon: ShieldCheck, title: "Trusted Solutions", desc: "Only handpicked, regulated products from top institutions." },
   { Icon: Sparkles, title: "Personalised Guidance", desc: "Custom plans built around your goals and risk profile." },
   { Icon: CheckCircle2, title: "Fast Claim Assistance", desc: "We stand by you when it matters most — end-to-end claim help." },
-  { Icon: Briefcase, title: "Lifetime Support", desc: "A relationship-first approach that lasts beyond a transaction." },
+  { Icon: Briefcase, title: "Lifetime Support", desc: "A relationship-first approach that lasts beyond a transaction.\n\n" },
 ];
 
 const testimonials = [
@@ -238,7 +238,7 @@ function HomePage() {
                 className="rounded-3xl glass p-7 hover:border-gold/40 transition-colors">
                 <div className="h-12 w-12 rounded-2xl bg-gradient-gold grid place-items-center text-navy-deep mb-4"><Icon className="h-6 w-6" /></div>
                 <h3 className="text-lg font-display font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-white/70 leading-relaxed">{desc}</p>
+                <p className="mt-2 text-sm text-white/70 leading-relaxed whitespace-pre-line">{desc}</p>
               </motion.div>
             ))}
           </div>
