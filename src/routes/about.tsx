@@ -102,7 +102,7 @@ function AboutPage() {
               className="rounded-3xl bg-card border border-border p-7 shadow-card hover:shadow-luxe hover:-translate-y-1 transition-all">
               <div className="h-12 w-12 rounded-2xl bg-gradient-gold grid place-items-center text-navy-deep mb-4 shadow-gold"><Icon className="h-6 w-6" /></div>
               <h3 className="font-display text-lg font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{desc}</p>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed whitespace-pre-line">{desc}</p>
             </motion.div>
           ))}
         </div>
